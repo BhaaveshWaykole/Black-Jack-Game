@@ -99,7 +99,7 @@ void turns(){
 
     printf("Your total is %d points and dealers total is %d\n", user_total_pts, dealer_total_pts);
     if(user_total_pts == 21){
-        printf("CONGRATS!! You won");
+        printf("CONGRATS!! You won\n");
     }else{
         char ask[10];
         scanf("%s", ask);
@@ -110,17 +110,17 @@ void turns(){
                 char *new_fac = card_face(d);
                 int new_number = card_num(d);
                 user_total_pts += new_number;
-                printf("You got %s of %s worth %d", new_fac, new_sym, new_number);
+                printf("You got %s of %s worth %d\n", new_fac, new_sym, new_number);
                 if(user_total_pts < 21){
                     if(new_number == 1){
                         if(user_total_pts+10 == 21){
                             user_total_pts += 10;
-                            printf("YOU WON THE GAME");
+                            printf("YOU WON THE GAME\n");
                             break;
                         }
                         else{
                             int ask;
-                            printf("You recieved a ACE, choose to make it count as 1 or 11");
+                            printf("You recieved a ACE, choose to make it count as 1 or 11\n");
                             scanf("%d", &ask);
                             if(ask == 11){
                                 user_total_pts += 10;
@@ -129,28 +129,28 @@ void turns(){
 
                     }
                 }else if(user_total_pts == 21){
-                    printf("You WON THE GAME!!");
+                    printf("You WON THE GAME!!\n");
                     break;
                 }else{
-                    printf("You Lost the game with points %d.", user_total_pts);
+                    printf("You Lost the game with points %d.\n", user_total_pts);
                     break;
                 }
             }else if (strcmp(ask, "help") == 0){
-                printf("Enter 'hit' to get another card or 'stand' to hold");
+                printf("Enter 'hit' to get another card or 'stand' to hold\n");
 
             }else if (strcmp(ask, "quit") == 0){
                 quit();
-                printf("Enter 'hit' to get another card or 'stand' to hold");
+                printf("Enter 'hit' to get another card or 'stand' to hold\n");
             }else{
-                printf("Wrong input, enter again");
-                printf("Yout total is %d", user_total_pts);
+                printf("Wrong input, enter again\n");
+                printf("Yout total is %d\n", user_total_pts);
                 scanf("%s", ask);
             }
         }
     }
 
     if(user_total_pts < 21){
-        printf("The dealer flips a %s of %s of worth %d ", card_face4, card_sym4, card_num4);
+        printf("The dealer flips a %s of %s of worth %d\n", card_face4, card_sym4, card_num4);
         dealer_total_pts += card_num4;
         if(card_num4 == 1){
             if(dealer_total_pts + 11 < 21){
@@ -159,7 +159,7 @@ void turns(){
         }
 
         if (dealer_total_pts >= 16){
-            printf("The dealer stands with %d", dealer_total_pts);
+            printf("The dealer stands with %d\n", dealer_total_pts);
         }
 
         while(dealer_total_pts < 16){
@@ -168,7 +168,7 @@ void turns(){
             char *new_fac = card_face(d);
             int new_number = card_num(d);
             dealer_total_pts += new_number;
-            printf("Dealer got %s of %s worth %d", new_fac, new_sym, new_number);
+            printf("Dealer got %s of %s worth %d\n", new_fac, new_sym, new_number);
             if(dealer_total_pts < 16){
                 if(new_number == 1){
                     if(dealer_total_pts + 11 < 21){
@@ -272,6 +272,7 @@ char *card_face(int n){
             break;
         case 13:
             face = "K";
+            break;
     }
     return face;
 }
@@ -281,12 +282,16 @@ char *card_symbol(int n){
     switch(n){
         case 1:
             return "Hearts";
+            break;
         case 2:
             return "Clubs";
+            break;
         case 3:
             return "Diamonds";
+            break;
         case 4:
             return "Spades";
+            break;
     }
     return 0;
 }
